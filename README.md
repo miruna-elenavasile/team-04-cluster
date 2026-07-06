@@ -222,3 +222,4 @@ code. See [`docs/workflow.md`](docs/workflow.md) for that flow, and
 - **Security**: this is an unauthenticated local demo / public template — no
   auth, no secrets, no real data. It is not production-secure by design.
 - No database: vehicle state is in memory and resets on restart.
+Echipa 4:Miruna Vasile,Strachinar Alexandru
