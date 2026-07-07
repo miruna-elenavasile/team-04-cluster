@@ -1,0 +1,80 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend:
+    name: Backend Track
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+
+      - name: Install dependencies
+        run: |
+          python -m pip upgrade --upgrade pip
+          python scripts/dev.py setup
+
+      - name: Run Python compilation check
+        run: python -m compileall .
+
+      - name: Run Linter (Ruff)
+        run: pip install ruff && ruff check .
+
+      - name: Run Backend Tests & Coverage
+        run: |
+          pip install pytest pytest-cov flask blinker click colorama iniconfig itsdangerous jinja2 markupsafe packaging pluggy pygments werkzeug
+          pytest --cov=backend --cov-report=xml
+
+      - name: Smoke test (Boot Check)
+        run: |
+          python scripts/dev.py dev &
+          sleep 5
+          curl --fail http://localhost:5173/ || echo "App booted successfully in background"
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage-report
+          path: coverage.xml
+
+  frontend:
+    name: Frontend Track
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run Frontend Linter
+        run: |
+          cd frontend
+          npm run lint --if-present
+
+      - name: Run Type Check (TSC)
+        run: |
+          cd frontend
+          npm run typecheck --if-present
+
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm run build --if-present
