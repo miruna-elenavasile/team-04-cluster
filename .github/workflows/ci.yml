@@ -19,10 +19,10 @@ jobs:
         with:
           python-version: '3.11' 
 
-      - name: Install dependencies
+     - name: Install dependencies
         run: |
-          python -m pip upgrade --upgrade pip
-          python scripts/dev.py setup
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov flask blinker click colorama iniconfig               python scripts/dev.py setup
 
       - name: Run Python compilation check
         run: python -m compileall .
@@ -32,7 +32,6 @@ jobs:
 
       - name: Run Backend Tests & Coverage
         run: |
-          pip install pytest pytest-cov flask blinker click colorama iniconfig itsdangerous jinja2 markupsafe packaging pluggy pygments werkzeug
           pytest --cov=backend --cov-report=xml
 
       - name: Smoke test (Boot Check)
