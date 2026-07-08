@@ -227,3 +227,5 @@ code. See [`docs/workflow.md`](docs/workflow.md) for that flow, and
 - No database: vehicle state is in memory and resets on restart.
 Echipa 4:Miruna Vasile,Strachinar Alexandru
 <!TEST TEST-->
+
+modificare facuta de Alex pentru testul de conflict
