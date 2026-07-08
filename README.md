@@ -2,6 +2,8 @@ Miruna Vasile si Alexandru Strachinar
 [![CI Pipeline](https://github.com/miruna-elenavasile/team-04-cluster/actions/workflows/ci.yml/badge.svg)](https://github.com/miruna-elenavasile/team-08-cluster/actions/workflows/ci.yml)
 
 Echipa 8
+@miruna-elenavasile
+@alexstrachinar-beep
 
 A digital automotive **instrument cluster** — the starter app for the ISSA
 Summer Practice DevOps week. It ships **fully working and green**. Your job for
@@ -227,5 +229,8 @@ code. See [`docs/workflow.md`](docs/workflow.md) for that flow, and
 - No database: vehicle state is in memory and resets on restart.
 Echipa 4:Miruna Vasile,Strachinar Alexandru
 <!TEST TEST-->
+
+
+
 
 modificare facuta de Alex pentru testul de conflict
