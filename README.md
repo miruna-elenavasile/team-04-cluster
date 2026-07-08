@@ -234,3 +234,5 @@ Echipa 4:Miruna Vasile,Strachinar Alexandru
 
 
 modificare facuta de Alex pentru testul de conflict
+Modificare facuta de Miruna pentru testul de conflict.
+
