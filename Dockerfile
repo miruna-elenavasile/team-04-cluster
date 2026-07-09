@@ -11,7 +11,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # --- STAGE 2: Run Backend with Python ---
-FROM python:3.x-slim
+FROM python:3.10-slim
 WORKDIR /app
 
 # Instalăm dependințele pentru backend
@@ -30,5 +30,8 @@ EXPOSE 8000
 # Variabilă de mediu cerută pentru HOST
 ENV HOST=0.0.0.0
 
-# Comanda de pornire a aplicației
-CMD ["python", "backend/main.py"]
+# Schimbăm directorul de lucru în folderul backend pentru ca importurile Python să funcționeze corect
+WORKDIR /app/backend
+
+# Pornim aplicația ca modul Python, executând automat backend/app/__main__.py
+CMD ["python", "-m", "app"]
