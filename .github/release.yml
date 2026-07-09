@@ -1,14 +1,28 @@
 changelog:
+  title: "What's Changed"
+  exclude:
+    labels:
+      - ignore-changelog
+      - internal
+    authors:
+      - dependabot
   categories:
-    - title: 🚀 Features Noi
+    - title: "🚀 Features"
       labels:
         - enhancement
         - feature
-    - title: 🐛 Bug Fixes
+        - feat
+    - title: "🐛 Bug Fixes"
       labels:
         - bug
         - fix
-    - title: 📝 Documentație & Altele
+    - title: "⚡ Performance"
+      labels:
+        - performance
+    - title: "📖 Documentation"
       labels:
         - documentation
+    - title: "🧰 Maintenance"
+      labels:
         - chore
+        - refactor
