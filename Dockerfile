@@ -16,6 +16,8 @@ WORKDIR /app
 
 # Instalăm dependințele pentru backend
 COPY backend/requirements.txt ./backend/
+COPY backend/dev-requirements.txt ./backend/
+RUN pip install --no-cache-dir -r backend/requirements.txt -r backend/dev-requirements.txt
 RUN pip install --no-cache-dir -r backend/requirements.txt
 
 # Copiem codul de backend
@@ -34,4 +36,5 @@ ENV HOST=0.0.0.0
 WORKDIR /app/backend
 
 # Pornim aplicația ca modul Python, executând automat backend/app/__main__.py
+CMD ["python", "-m", "app"]
 CMD ["python", "-m", "app"]
